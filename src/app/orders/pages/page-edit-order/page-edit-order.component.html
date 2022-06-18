@@ -1,0 +1,9 @@
+<!-- Version avec pipe async -->
+<!-- <app-template-container title="Edition de commande" *ngIf="orderToEdit$ | async as orderToEdit">
+    <app-form-order [init]="orderToEdit"></app-form-order>
+</app-template-container> -->
+
+<!-- Version avec subscribe -->
+<app-template-container title="Edition de commande" *ngIf="orderToEdit">
+    <app-form-order [init]="orderToEdit" (submitted)="onSubmitUpdateOrder($event)"></app-form-order>
+</app-template-container>

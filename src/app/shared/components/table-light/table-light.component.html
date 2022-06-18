@@ -1,0 +1,13 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th *ngFor="let header of headers">{{ header }}</th>
+            <!-- <th *ngFor="let header of collection[0] | keyvalue">
+                {{ header.key }}
+            </th> -->
+        </tr>
+    </thead>
+    <tbody>
+       <ng-content></ng-content>
+    </tbody>
+</table>

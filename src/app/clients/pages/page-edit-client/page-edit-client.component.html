@@ -1,0 +1,3 @@
+<app-template-container title="Modification  d'un client" *ngIf="clientToUpdate$ | async as clientToUpdate">
+    <app-form-client [init]="clientToUpdate" (submitted)="onSubmittedUpdateClient($event)"></app-form-client>
+</app-template-container>

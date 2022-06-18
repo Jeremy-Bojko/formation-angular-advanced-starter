@@ -1,0 +1,16 @@
+form {
+    // .ng-invalid.ng-touched {
+    //     border: 3px solid var(--app-error);
+    // }
+    // .ng-valid.ng-touched {
+    //     border: 3px solid var(--app-success);
+    // }
+    .ng-touched {
+        &.ng-invalid {
+            border: 3px solid var(--app-error);
+        }
+        &.ng-valid {
+            border: 3px solid var(--app-success);
+        }
+    }
+}

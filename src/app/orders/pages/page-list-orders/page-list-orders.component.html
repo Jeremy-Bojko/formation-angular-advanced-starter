@@ -1,0 +1,38 @@
+
+<app-template-full-width [title]="titleParent" *ngIf="subCollection$ | async as collection">
+    <app-table-light [headers]="headers">
+        <tr *ngFor="let item of collection">
+            <td>
+                <!-- <app-icon-edit (click)="onClickGoToEdit(item)"></app-icon-edit> -->
+                <app-icon-edit [routerLink]="['edit', item.id]"></app-icon-edit>
+            </td>
+            <td>
+                <app-icon-delete (click)="onClickDelete(item)"></app-icon-delete>
+            </td>
+            <td>{{ item.tjmHt }}</td>
+            <td>{{ item.nbJours }}</td>
+            <td>{{ item.tva }}</td>
+            <td>{{ item | total | currency }}</td>
+            <td>{{ item | total : true | currency }}</td>
+            <td>{{ item.typePresta }}</td>
+            <td>{{ item.client }}</td>
+            <!-- <td [ngClass]="{
+                'state-option': item.state === 'OPTION',
+                'state-confirmed': item.state === 'CONFIRMED',
+                'state-canceled': item.state === 'CANCELED'}">  -->
+            <!-- Version beta -->
+            <!-- <td class="state-{{item.state| lowercase}}"> v.2-->
+            <td [appState]="item.state">
+                <select (change)="onChangeState(item, $event)">
+                    <option *ngFor="let state of stateOrder | keyvalue"
+                            [value]="state.key"
+                            [selected]="state.key === item.state">
+                        {{state.value}}
+                    </option>
+                </select>
+            </td>
+        </tr>
+    </app-table-light>
+    <app-btn label="add an order" route="add"></app-btn>
+</app-template-full-width>
+
