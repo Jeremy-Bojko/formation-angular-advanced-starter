@@ -23,6 +23,12 @@ export class OrdersService {
     );
    }
 
+  public loadOrders(): Observable<Order[]> {
+    return this.collection$.pipe(
+      tap((listOrder: Order[]) => this.subCollection$.next(listOrder))
+    );
+  }
+  
   public refreshCollection(): void {
     // On se sert de notre flux de donnée type observable froid
     this.collection$.subscribe((listOrder: Order[]) => {

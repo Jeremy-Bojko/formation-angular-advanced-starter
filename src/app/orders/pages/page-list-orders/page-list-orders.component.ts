@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
+import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BehaviorSubject, Observable, pluck, Subject, Subscription, tap } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
 import { VersionService } from 'src/app/core/services/version.service';
@@ -27,6 +27,7 @@ export class PageListOrdersComponent implements OnInit {
   public demoDate = new Date();
 
   public stateOrder = StateOrder;
+  public collection!: Order[];
   
   private count = 0;
   // private subNumVersion: Subscription;
@@ -34,12 +35,19 @@ export class PageListOrdersComponent implements OnInit {
   constructor(
     private ordersService: OrdersService,
     private versionService: VersionService,
-    private router: Router) { 
+    private router: Router, 
+    private route: ActivatedRoute) { 
     this.headers = ["","", $localize `TjmHt`, $localize `NbJours`, $localize `TVA`, $localize `Total HT`, $localize `Total TTC`, $localize `Type Presta`, $localize `Client`, $localize `State`];
     
     // this.collection$ = this.ordersService.collection$;
-    this.subCollection$ = this.ordersService.subCollection$;
-    this.ordersService.refreshCollection();
+    this.subCollection$ = this.ordersService.subCollection$
+    
+    this.route.data.pipe(pluck('orders')).subscribe((data) => {
+      console.log(data);
+      this.collection = data;
+      console.log("resolve");
+    })
+    //this.ordersService.refreshCollection();
 
     // this.ordersService.collection$.subscribe({
     //     next: (data) => { 
