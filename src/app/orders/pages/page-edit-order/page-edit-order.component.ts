@@ -30,7 +30,7 @@ export class PageEditOrderComponent implements OnInit {
       const orderId = Number(params.get('id'));
       console.log(orderId);
       this.ordersService.getById(orderId).subscribe((order: Order) => {
-        this.orderToEdit = order;
+        this.orderToEdit = new Order(order);
       });
     })
    }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
@@ -8,7 +8,7 @@ import { Order } from 'src/app/core/models/order';
   templateUrl: './form-order.component.html',
   styleUrls: ['./form-order.component.scss']
 })
-export class FormOrderComponent implements OnInit {
+export class FormOrderComponent implements OnInit, OnChanges {
   public states = StateOrder;
   @Input() init!: Order;
   public form!:FormGroup;
@@ -29,6 +29,9 @@ export class FormOrderComponent implements OnInit {
     // });
 
     // manière concise
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
     this.form = this.fb.group({
       tjmHt: [this.init.tjmHt],
       typePresta: [this.init.typePresta, Validators.required],

@@ -32,7 +32,9 @@ export class OrdersService {
   }
 
   public update(order: Order): Observable<Order> {
-    return this.http.put<Order>(`${this.urlApi}/orders/${order.id}`, order);
+    return this.http.put<Order>(`${this.urlApi}/orders/${order.id}`, order).pipe(
+      tap(() => this.refreshCollection())
+    );
   }
 
   public changeState(order: Order, state: StateOrder): Observable<Order> {
@@ -41,7 +43,9 @@ export class OrdersService {
   }
 
   public add(order: Order): Observable<Order> {
-    return this.http.post<Order>(`${this.urlApi}/orders`, order);
+    return this.http.post<Order>(`${this.urlApi}/orders`, order).pipe(
+      tap(() => this.refreshCollection())
+    );
   }
 
   public getById(orderId: number): Observable<Order> {
