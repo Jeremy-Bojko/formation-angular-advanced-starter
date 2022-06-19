@@ -17,12 +17,18 @@
       "sourceRoot": "src",
       "prefix": "app",
       "i18n": {
-        "sourceLocale": "fr"
+        "sourceLocale": "fr",
+        "locales": {
+          "en": {
+            "translation": "src/locale/messages.en.xlf"
+          }
+        }
       },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "localize": true,
             "outputPath": "dist/formation-angular-advanced-starter",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -66,7 +72,11 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "localize":false
+            },
+            "en": {
+              "localize": ["en"]
             }
           },
           "defaultConfiguration": "production"
@@ -79,6 +89,9 @@
             },
             "development": {
               "browserTarget": "formation-angular-advanced-starter:build:development"
+            },
+            "en": {
+              "browserTarget": "formation-angular-advanced-starter:build:development,en"
             }
           },
           "defaultConfiguration": "development"

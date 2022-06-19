@@ -4,13 +4,15 @@
   "scripts": {
     "ng": "ng",
     "start": "concurrently  \"ng serve\" \"npm run api\" ",
+    "start:en": "ng serve --configuration=en",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "api": "json-server --watch mock_db/db.json",
     "compodoc:build": "compodoc -p tsconfig.doc.json",
     "compodoc:build-and-serve": "compodoc -p tsconfig.doc.json -s",
-    "compodoc:serve": "compodoc -s"
+    "compodoc:serve": "compodoc -s",
+    "extract": "ng extract-i18n --output-path src/locale"
   },
   "private": true,
   "dependencies": {
@@ -37,6 +39,7 @@
     "@angular/cli": "~13.0.3",
     "@angular/compiler-cli": "~13.0.0",
     "@angular/localize": "^13.0.3",
+    "@ngx-i18nsupport/ngx-i18nsupport": "^1.1.6",
     "@types/bootstrap": "^5.1.9",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",

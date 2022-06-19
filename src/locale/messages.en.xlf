@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="fr" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="footer-version" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {L&apos;app n&apos;a pas encore de version} =1 {L&apos;app est à sa première version} other {L&apos;app est à sa version numéro <x id="INTERPOLATION"/>}}</source>
+        <target>{VAR_PLURAL, plural, =0 {App doesn&apos;t get any version} =1 {App&apos;s first version !} other {App&apos;s version number <x id="INTERPOLATION"/>}}</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/components/footer/footer.component.html</context>
+          <context context-type="linenumber">1,2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="nav-version-number" datatype="html">
+        <source>Version n° <x id="INTERPOLATION" equiv-text="{{ version }}"/></source>
+        <target>Version n° <x id="INTERPOLATION" equiv-text="{{ version }}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/components/header/header.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="544501444975161474" datatype="html">
+        <source> Test Modal</source>
+        <target>Want to test Modal ?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/components/header/header.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description">nav-btn-modal</note>
+      </trans-unit>
+      <trans-unit id="nav-current-date" datatype="html">
+        <source>Nous sommes le <x id="INTERPOLATION" equiv-text="{{ currentDate | date }}"/></source>
+        <target>Today is <x id="INTERPOLATION" equiv-text="{{ currentDate | date }}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/components/header/header.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6563391987554512024" datatype="html">
+        <source>Test</source>
+        <target>Test</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/components/header/header.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2258702572359438014" datatype="html">
+        <source>Test ajouté avec success ! 🎉</source>
+        <target>Test added successfully ! 🎉</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/components/header/header.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="nav.orders" datatype="html">
+        <source>Commandes</source>
+        <target>Orders</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/components/nav/nav.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="nav.customers" datatype="html">
+        <source>Clients</source>
+        <target>Customers</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/components/nav/nav.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="btn-increment" datatype="html">
+        <source>Incrementer</source>
+        <target>Increment</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/components/nav/nav.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="863020414323748397" datatype="html">
+        <source>TjmHt</source>
+        <target>Daily rate</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/orders/pages/page-list-orders/page-list-orders.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3725603757919497608" datatype="html">
+        <source>NbJours</source>
+        <target>Days</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/orders/pages/page-list-orders/page-list-orders.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7251673081717631685" datatype="html">
+        <source>TVA</source>
+        <target>VAT</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/orders/pages/page-list-orders/page-list-orders.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8078730683137341542" datatype="html">
+        <source>Total HT</source>
+        <target>Total without taxes</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/orders/pages/page-list-orders/page-list-orders.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2230099960340457652" datatype="html">
+        <source>Total TTC</source>
+        <target>Total</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/orders/pages/page-list-orders/page-list-orders.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7593912955476263890" datatype="html">
+        <source>Type Presta</source>
+        <target>Service</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/orders/pages/page-list-orders/page-list-orders.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3014142150963657456" datatype="html">
+        <source>Client</source>
+        <target>Customer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/orders/pages/page-list-orders/page-list-orders.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5911214550882917183" datatype="html">
+        <source>Etat</source>
+        <target>State</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/orders/pages/page-list-orders/page-list-orders.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -9,6 +9,7 @@ import { VersionService } from '../../services/version.service';
 })
 export class HeaderComponent implements OnInit {
   public version!: number;
+  public currentDate: Date;
 
   constructor(
       private versionService: VersionService,
@@ -17,6 +18,7 @@ export class HeaderComponent implements OnInit {
     this.versionService.numVersion$.subscribe(numVersion => {
       this.version = numVersion;
     })
+    this.currentDate = new Date();
    }
 
   ngOnInit(): void {
@@ -24,6 +26,6 @@ export class HeaderComponent implements OnInit {
 
   public openModal(): void {
 
-    this.modalService.displayModal('Test', `Test ajouté avec success ! 🎉`)
+    this.modalService.displayModal($localize `Test`, $localize `Test ajouté avec success ! 🎉`)
   }
 }

@@ -35,7 +35,7 @@ export class PageListOrdersComponent implements OnInit {
     private ordersService: OrdersService,
     private versionService: VersionService,
     private router: Router) { 
-    this.headers = ["","", "TjmHt", "NbJours", "TVA", "Total HT", "Total TTC", "Type Presta", "Client", "State"];
+    this.headers = ["","", $localize `TjmHt`, $localize `NbJours`, $localize `TVA`, $localize `Total HT`, $localize `Total TTC`, $localize `Type Presta`, $localize `Client`, $localize `State`];
     
     // this.collection$ = this.ordersService.collection$;
     this.subCollection$ = this.ordersService.subCollection$;
