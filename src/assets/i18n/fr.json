@@ -1,0 +1,26 @@
+{
+  "HEADER": {
+    "NUMBER_VERSION": "Version numéro {{version}}"
+  },
+  "NAV": {
+    "ORDERS": "Commandes",
+    "CUSTOMERS": "Clients",
+    "BTN_INCREMENT": "Incrémenter"
+  },
+  "PAGE": {
+    "LIST_ORDERS": {
+      "TABLE": {
+        "HEADER": {
+          "DAILY_RATE": "TjmHt",
+          "DAYS": "NbJours",
+          "VAT": "TVA",
+          "TOTAL_TAX_FREE": "Total HT",
+          "TOTAL_TAX_INCL": "Total TTC",
+          "SERVICE_TYPE": "Type Presta",
+          "CUSTOMER": "Client",
+          "STATE": "État"
+        }
+      }
+    }
+  }
+}

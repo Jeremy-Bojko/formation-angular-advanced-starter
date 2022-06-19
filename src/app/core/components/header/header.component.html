@@ -1,2 +1,7 @@
-<span>Version n° {{ version }}</span>
+<span>{{'HEADER.NUMBER_VERSION' | translate:{version:version} }}</span>
 <button class="btn btn-success ms-1 btn-sm" (click)="openModal()"> Test Modal</button>
+<select #langSelect (change)="translate.use(langSelect.value)">
+    <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+</select>
+
+<span>{{ currentDate | date:'mediumDate':'undefined':selectedLang }}</span>

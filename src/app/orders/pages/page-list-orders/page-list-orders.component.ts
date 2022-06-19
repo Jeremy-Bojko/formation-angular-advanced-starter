@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
+import { BehaviorSubject, forkJoin, Observable, Subject, Subscription, switchMap } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
 import { VersionService } from 'src/app/core/services/version.service';
@@ -18,7 +19,7 @@ export class PageListOrdersComponent implements OnInit {
   // public collection$: Observable<Order[]>;
   public subCollection$: Subject<Order[]>;
   public numVersion$: BehaviorSubject<number>;
-  public headers: string[];
+  public headers!: string[];
 
   public titleTest = 'Le titre de mon composant';
 
@@ -34,8 +35,29 @@ export class PageListOrdersComponent implements OnInit {
   constructor(
     private ordersService: OrdersService,
     private versionService: VersionService,
-    private router: Router) { 
-    this.headers = ["","", "TjmHt", "NbJours", "TVA", "Total HT", "Total TTC", "Type Presta", "Client", "State"];
+    private router: Router,
+    private translate: TranslateService
+    ) { 
+      this.translate.onLangChange.pipe(
+        switchMap(() => {
+          return forkJoin(
+            [
+              this.translate.get('PAGE.LIST_ORDERS.TABLE.HEADER.DAILY_RATE'),
+              this.translate.get('PAGE.LIST_ORDERS.TABLE.HEADER.DAYS'),
+              this.translate.get('PAGE.LIST_ORDERS.TABLE.HEADER.VAT'),
+              this.translate.get('PAGE.LIST_ORDERS.TABLE.HEADER.TOTAL_TAX_FREE'),
+              this.translate.get('PAGE.LIST_ORDERS.TABLE.HEADER.TOTAL_TAX_INCL'),
+              this.translate.get('PAGE.LIST_ORDERS.TABLE.HEADER.SERVICE_TYPE'),
+              this.translate.get('PAGE.LIST_ORDERS.TABLE.HEADER.CUSTOMER'),
+              this.translate.get('PAGE.LIST_ORDERS.TABLE.HEADER.STATE'),
+            ]
+          )}
+        )
+      ).subscribe( (tabHeader: string[]) => {
+        console.log(tabHeader);
+        this.headers = ["", "",...tabHeader];
+      })
+    // this.headers = ["","", "TjmHt", "NbJours", "TVA", "Total HT", "Total TTC", "Type Presta", "Client", "State"];
     
     // this.collection$ = this.ordersService.collection$;
     this.subCollection$ = this.ordersService.subCollection$;
@@ -66,6 +88,20 @@ export class PageListOrdersComponent implements OnInit {
   
 
   ngOnInit(): void {
+    forkJoin(
+      [
+        this.translate.get('PAGE.LIST_ORDERS.TABLE.HEADER.DAILY_RATE'),
+        this.translate.get('PAGE.LIST_ORDERS.TABLE.HEADER.DAYS'),
+        this.translate.get('PAGE.LIST_ORDERS.TABLE.HEADER.VAT'),
+        this.translate.get('PAGE.LIST_ORDERS.TABLE.HEADER.TOTAL_TAX_FREE'),
+        this.translate.get('PAGE.LIST_ORDERS.TABLE.HEADER.TOTAL_TAX_INCL'),
+        this.translate.get('PAGE.LIST_ORDERS.TABLE.HEADER.SERVICE_TYPE'),
+        this.translate.get('PAGE.LIST_ORDERS.TABLE.HEADER.CUSTOMER'),
+        this.translate.get('PAGE.LIST_ORDERS.TABLE.HEADER.STATE'),
+      ]
+    ).subscribe( (tabHeader: string[]) => {
+      this.headers = ["", "",...tabHeader];
+    })
   }
 
   public onChangeState(order: Order, event: any): void {

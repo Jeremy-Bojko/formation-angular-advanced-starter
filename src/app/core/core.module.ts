@@ -9,6 +9,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { ModalMsgComponent } from './components/modal-msg/modal-msg.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -21,7 +22,8 @@ import { ModalMsgComponent } from './components/modal-msg/modal-msg.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    TranslateModule
   ],
   exports: [
     UiModule,
