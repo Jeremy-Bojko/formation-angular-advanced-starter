@@ -1,2 +1,8 @@
-<span>Version n° {{ version }}</span>
-<button class="btn btn-success ms-1 btn-sm" (click)="openModal()"> Test Modal</button>
+<ng-container *transloco="let t; read: 'HEADER'">
+    <span>{{ t('NUMBER_VERSION', {version}) }}</span>
+    <button class="btn btn-success ms-1 btn-sm" (click)="openModal()"> Test Modal</button>
+    <select #langSelect (change)="onChangeLang(langSelect.value)">
+        <option *ngFor="let lang of availableLang" [value]="lang" [selected]="lang === this.translocoService.getActiveLang()">{{ lang }}</option>
+    </select>
+</ng-container>
+    

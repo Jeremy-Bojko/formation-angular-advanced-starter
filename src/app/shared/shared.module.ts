@@ -7,6 +7,7 @@ import { BtnComponent } from './components/btn/btn.component';
 import { TotalPipe } from './pipes/total.pipe';
 import { StateDirective } from './directives/state.directive';
 import { RouterModule } from '@angular/router';
+import { TranslocoModule } from '@ngneat/transloco';
 
 
 
@@ -27,7 +28,8 @@ import { RouterModule } from '@angular/router';
     TableLightComponent,
     BtnComponent,
     TotalPipe,
-    StateDirective
+    StateDirective,
+    TranslocoModule
   ]
 })
 export class SharedModule { }

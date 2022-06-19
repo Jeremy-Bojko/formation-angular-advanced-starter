@@ -1,0 +1,26 @@
+{
+    "HEADER": {
+        "NUMBER_VERSION": "Version number {{ version }}"
+    },
+    "NAV": {
+        "BTN_INCREMENT": "Increment",
+        "CUSTOMERS": "Customers",
+        "ORDERS": "Orders"
+    },
+    "PAGE": {
+        "LIST_ORDERS": {
+            "TABLE": {
+                "HEADER": {
+                    "CUSTOMER": "Customer",
+                    "DAILY_RATE": "Daily Rate",
+                    "DAYS": "Days",
+                    "SERVICE_TYPE": "Service Type",
+                    "STATE": "State",
+                    "TOTAL_TAX_FREE": "Total Taxe free",
+                    "TOTAL_TAX_INCL": "Total Taxe include",
+                    "VAT": "VAT"
+                }
+            }
+        }
+    }
+}
