@@ -8,6 +8,10 @@ import { PageEditOrderComponent } from './pages/page-edit-order/page-edit-order.
 import { SharedModule } from '../shared/shared.module';
 import { FormOrderComponent } from './components/form-order/form-order.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { orderReducer, ordersFeatureKey } from './store/reducers/orders.reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { OrdersEffects } from './store/effects/orders.effects';
 
 
 @NgModule({
@@ -21,7 +25,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     OrdersRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forFeature(ordersFeatureKey,orderReducer),
+    EffectsModule.forFeature([OrdersEffects])
   ],
   providers: [
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' }

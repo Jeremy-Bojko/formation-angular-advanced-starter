@@ -38,9 +38,7 @@ export class OrdersService {
   }
 
   public update(order: Order): Observable<Order> {
-    return this.http.put<Order>(`${this.urlApi}/orders/${order.id}`, order).pipe(
-      tap(() => this.refreshCollection())
-    );
+    return this.http.put<Order>(`${this.urlApi}/orders/${order.id}`, order)
   }
 
   public changeState(order: Order, state: StateOrder): Observable<Order> {
@@ -49,9 +47,7 @@ export class OrdersService {
   }
 
   public add(order: Order): Observable<Order> {
-    return this.http.post<Order>(`${this.urlApi}/orders`, order).pipe(
-      tap(() => this.refreshCollection())
-    );
+    return this.http.post<Order>(`${this.urlApi}/orders`, order)
   }
 
   public getById(orderId: number): Observable<Order> {
@@ -59,16 +55,7 @@ export class OrdersService {
   }
 
   public deleteById(orderId: number): Observable<any> {
-    /**
-     * 1 - Envoie de Requete http type delete
-     * 2 - Recupération de la réponse dans le service
-     * 3 - Grâce au pipe, on effectue des actions avant de transmettre la donnée à l'abonné
-     *    3.1 - tap nous permet d'effectuer une action sans modifier notre Observable
-     * 4 - L'observable est retourné à l'abonné 
-     */
-    return this.http.delete<any>(`${this.urlApi}/orders/${orderId}`).pipe(
-      tap(() => this.refreshCollection())
-    );
+    return this.http.delete<any>(`${this.urlApi}/orders/${orderId}`)
   }
 
 }

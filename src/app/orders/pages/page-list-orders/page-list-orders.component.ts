@@ -1,11 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { BehaviorSubject, Observable, pluck, Subject, Subscription, tap } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
 import { VersionService } from 'src/app/core/services/version.service';
 import { OrdersService } from '../../services/orders.service';
+import { deleteOrderByIdAction, editOrderAction, getAllOrdersAction } from '../../store/actions/orders.actions';
+import { selectAllOrders } from '../../store/selectors/orders.selectors';
 
 @Component({
   selector: 'app-page-list-orders',
@@ -15,9 +18,7 @@ import { OrdersService } from '../../services/orders.service';
 export class PageListOrdersComponent implements OnInit {
   public titleParent = 'Liste de commandes';
   // public collection!: Order[];
-  // public collection$: Observable<Order[]>;
-  public subCollection$: Subject<Order[]>;
-  public numVersion$: BehaviorSubject<number>;
+  public collection$: Observable<Order[]>;
   public headers: string[];
 
   public titleTest = 'Le titre de mon composant';
@@ -34,32 +35,12 @@ export class PageListOrdersComponent implements OnInit {
 
   constructor(
     private ordersService: OrdersService,
-    private versionService: VersionService,
     private router: Router, 
-    private route: ActivatedRoute) { 
+    private store: Store
+  ) { 
     this.headers = ["","", $localize `TjmHt`, $localize `NbJours`, $localize `TVA`, $localize `Total HT`, $localize `Total TTC`, $localize `Type Presta`, $localize `Client`, $localize `State`];
-    
-    // this.collection$ = this.ordersService.collection$;
-    this.subCollection$ = this.ordersService.subCollection$
-    
-    this.route.data.pipe(pluck('orders')).subscribe((data) => {
-      console.log(data);
-      this.collection = data;
-      console.log("resolve");
-    })
-    //this.ordersService.refreshCollection();
-
-    // this.ordersService.collection$.subscribe({
-    //     next: (data) => { 
-    //       console.log('Next : ', data);
-    //       this.collection = data;
-    //     },
-    //     error: (err) => { console.error('Error : ', err)},
-    //     complete: () => { console.info('Fin de transmission')}
-    //   })
-      
-      // this.subNumVersion = this.versionService.numVersion$.subscribe(versionNum => console.warn("**** Num Version"))
-      this.numVersion$ = this.versionService.numVersion$;
+    this.collection$ = this.store.select(selectAllOrders);
+    this.store.dispatch(getAllOrdersAction());
   }
 
   public total(val: number, coef: number, tva?: number): number {
@@ -77,11 +58,8 @@ export class PageListOrdersComponent implements OnInit {
   }
 
   public onChangeState(order: Order, event: any): void {
-    this.ordersService.changeState(order, event.target.value).subscribe(
-      (data: Order) => {
-        order.state = data.state;
-      }
-    )
+    const orderToUpdate = new Order({...order, state: event.target.value});
+    this.store.dispatch(editOrderAction({orderToUpdate}));
   }
 
   public onClickGoToEdit(order: Order): void {
@@ -91,15 +69,10 @@ export class PageListOrdersComponent implements OnInit {
   }
 
   public onClickDelete(order: Order): void {
-    console.log(order.id);
-    //TODO  faire appel à notre service en souscrivant
-    this.ordersService.deleteById(order.id).subscribe((resp) => {
-      console.log("Suppression successful : ", resp);
-    });
+    this.store.dispatch(deleteOrderByIdAction({id: order.id}))
   }
 
   ngOnDestroy(): void {
     console.log('Instance detruite + desinscription');
-    // this.subNumVersion.unsubscribe();
   }
 }
