@@ -18,4 +18,8 @@ export class UiComponent implements OnInit {
     console.log('Call Toggle method !', this.open);
   }
 
+  check() {
+    console.log("CD UI");
+  }
+
 }

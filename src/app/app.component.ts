@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'formation-angular-advanced-starter';
   private testPrivate = 'Ceci n\'est pas accessible dans le template'; 
-
+  check() {
+    console.log("CD APP");
+  }
 }
